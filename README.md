@@ -1,5 +1,5 @@
 # Group1
 
-Robert Daniel
-Kennard McGill
+Robert Daniel <br />
+Kennard McGill <br />
 Jian Zhang
