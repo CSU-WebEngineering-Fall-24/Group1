@@ -8,9 +8,9 @@ import lombok.Setter;
 
 
 public class BookResponse {
-    private int numFound;
-    private int start;
-    private boolean numFoundExact;
+    private Number numFound;
+    private Number start;
+    private Boolean numFoundExact;
     private String docs;
     private String q;
     private String offset;

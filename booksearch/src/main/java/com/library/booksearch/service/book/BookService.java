@@ -7,5 +7,5 @@ public interface BookService {
     String getTitleQueryParam(String title);
     String getReqAuthor(String a);
     String getReqSubject(String s);
-    String getReqTitlePages(String t, Integer num);
+    String getReqTitlePages(String t, Number p);
 }

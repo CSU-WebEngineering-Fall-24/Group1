@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class BookServiceImpl implements BookService {
-
+    // title => t
     @Override
     public String getReqTitle(String t) {
         RestTemplate restTemplate = new RestTemplate();
@@ -19,23 +19,23 @@ public class BookServiceImpl implements BookService {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject("https://openlibrary.org/search.json?title="+title,String.class );
     }
-
+    // author => a
     @Override
     public String getReqAuthor(String a) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject("https://openlibrary.org/search/authors.json?q="+a,String.class );
     }
-
+    // subject => s
     @Override
     public String getReqSubject(String s) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject("https://openlibrary.org/search.json?subject="+s,String.class );
     }
-
+    // title => t  / page number => p
     @Override
-    public String getReqTitlePages(String t, Integer num) {
+    public String getReqTitlePages(String t, Number p) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("https://openlibrary.org/search.json?q="+t+"&page="+num,String.class );
+        return restTemplate.getForObject("https://openlibrary.org/search.json?q="+t+"&page="+p,String.class );
     }
 
 

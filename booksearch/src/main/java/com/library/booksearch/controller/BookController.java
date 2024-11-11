@@ -13,7 +13,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/titles")
+    @GetMapping("/search/q/titles")
     public String getSearchTitle(@RequestParam("t") String t) {
         return bookService.getReqTitle(t);
     }
@@ -23,19 +23,19 @@ public class BookController {
         return bookService.getTitleQueryParam(title);
     }
 
-    @GetMapping("/authors")
+    @GetMapping("/search/authors")
     public String getSearchAuthor(@RequestParam("a") String a) {
         return bookService.getReqAuthor(a);
     }
 
-    @GetMapping("/subject")
+    @GetMapping("/search/subject")
     public String getSearchSubject(@RequestParam("s") String s) {
         return bookService.getReqSubject(s);
     }
 
-    @GetMapping("/titles/pages")
-    public String getSearchTitle(@RequestParam("t") String t, @RequestParam("num") Integer num) {
-        return bookService.getReqTitlePages(t,num);
+    @GetMapping("/search/titles/pages")
+    public String getSearchTitle(@RequestParam("t") String t, @RequestParam("p") Number p) {
+        return bookService.getReqTitlePages(t,p);
     }
 
 
