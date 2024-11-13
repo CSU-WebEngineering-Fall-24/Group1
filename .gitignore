@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
 # Log file
 *.log
 
@@ -25,3 +30,6 @@ replay_pid*
 
 ### IDEA Code ###
 .idea/
+
+/src/main/react/node_modules/*
+node_modules
