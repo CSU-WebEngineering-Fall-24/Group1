@@ -9,8 +9,8 @@ const Nav = (props) => {
             label:'Home'
         },
         {
-          url:"/another",
-          label:'Place holder'
+          url:"/bookSearch",
+          label:'Book Search'
       },
 ]
     return (

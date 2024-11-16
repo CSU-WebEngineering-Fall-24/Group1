@@ -2,7 +2,7 @@ import React from "react";
 import ReactDom from 'react-dom/client'
 import Home from "./containers/HomePage.jsx";
 import AppContainer from "./containers/AppContainer.jsx";
-import AnotherPage from './containers/AnotherPage.jsx'
+import BookSearchPage from './containers/BookSearchPage.jsx'
 
 import { createBrowserRouter,
     RouterProvider
@@ -20,8 +20,8 @@ import { createBrowserRouter,
                     element:<Home/>
                 },
                 {
-                    path:"another",
-                    element:<AnotherPage/>
+                    path:"bookSearch",
+                    element:<BookSearchPage/>
                 },
             ]
         },
