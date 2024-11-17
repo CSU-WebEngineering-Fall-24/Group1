@@ -1,73 +1,111 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*min-height: 100vh; */
+  background-color: #f5f5f5; 
+}
+
+/* Container for the home content */
 .homeContentContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 100vh;
-  padding:24px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 56px;
+  padding: 24px;
+  background-color: #f5f5f5;
 }
 
-.homeContentContainer .bookContainer{
-    padding:24px;
-    background-color: aquamarine;
-
+/* Styling for the book container */
+.homeContentContainer .bookContainer {
+  padding: 24px;
+  background-color: aquamarine;
+  text-align: center; 
+  border-radius: 8px; 
 }
 
-
-
-.searchContainer{
+/* Search container for the search inputs and buttons */
+.searchContainer {
   display: flex;
-  gap:24px;
+  gap: 24px;
   margin-top: 24px;
-  padding:24px;
-
+  padding: 24px;
+  justify-content: center; 
 }
 
-.searchContainer .searchingInputs{
+/* Styling for the search inputs */
+.searchContainer .searchingInputs {
   display: flex;
   flex-direction: column;
-  gap:24px;
+  gap: 24px;
 }
 
-.searchContainer .searchingButtons{
+.searchingInputs .searchBar {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.searchingInputs .searchBar input {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
+  flex: 1; 
+}
+
+.searchingInputs .searchBar img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Dropdown or selection options */
+.searchingInputs .selection {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.selection .searchOptions label {
+  margin: 0px 8px;
+}
+
+/* Styling for search buttons */
+.searchContainer .searchingButtons {
   display: flex;
   flex-direction: column;
-  gap:24px;
+  gap: 24px;
   justify-content: center;
 }
 
-.searchContainer .searchingButtons button{
-  padding: 8px;
+.searchContainer .searchingButtons button {
+  padding: 8px 16px;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-.searchingInputs .searchBar{
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding:4px;
-  display: flex;
-  align-items: center;
+  font-size: 16px;
 }
 
-.searchingInputs .searchBar input{
-  border: none;
-  border-radius: 4px;
-  outline: none;
-}
-.searchingInputs .searchBar img{
-  width: 28px;
-  height: 28px;
+.searchContainer .searchingButtons button:hover {
+  background-color: #45a049; 
 }
 
-.searchingInputs .selection{
-  display: flex;
-  gap:16px;
-  align-items: center;
-}
-
-.selection .searchOptions label{
-  margin: 0px 8px;
-}
+/* nav {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 12px 24px;
+} */
