@@ -1,23 +1,65 @@
+import React, { useState } from "react";
+import './style.css';
 
-import React from "react";
-import './style.css'
+const Home = () => {
+    const [randomBook, setRandomBook] = useState(null);
+    const [randomBookStatus, setRandomBookStatus] = useState(null);
 
-const  Home =()=> {
+    const bookList = [
+        { title: "Pride and Prejudice", author: "Jane Austen", subject: "Classic Literature" },
+        { title: "1984", author: "George Orwell", subject: "Dystopian Fiction" },
+        { title: "To Kill a Mockingbird", author: "Harper Lee", subject: "American Literature" }
+        // Add more books as needed
+    ];
 
-    return(
+    const randomBookSearch = async () => {
+        const randomIndex = Math.floor(Math.random() * bookList.length);
+        const selectedBook = bookList[randomIndex];
+        
+        try {
+            const response = await fetch(`https://openlibrary.org/search.json?title=${selectedBook.title}`);
+            const data = await response.json();
+
+            if (data.docs && data.docs.length > 0) {
+                const bookDetails = data.docs[0]; // Pick the first result
+                setRandomBook({
+                    title: bookDetails.title,
+                    author: bookDetails.author_name ? bookDetails.author_name.join(", ") : "Unknown",
+                    subject: selectedBook.subject,
+                    cover: bookDetails.cover_i ? `https://covers.openlibrary.org/b/id/${bookDetails.cover_i}-L.jpg` : null,
+                });
+                setRandomBookStatus("success");
+            } else {
+                setRandomBook(null);
+                setRandomBookStatus("No results found");
+            }
+        } catch (error) {
+            console.error("Error fetching book data:", error);
+            setRandomBookStatus("error");
+        }
+    };
+
+    return (
         <div className="homeContentContainer">
-           <div className="bookContainer">
-                <h1>Book Of The day:</h1>
-                <div className="book">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg" alt="book" />
-                    <h2>Harry Potter and the Sorcerer's Stone</h2>
-                    <h3>by J.K. Rowling</h3>
-                    <p>Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed
-                    </p>
-                </div>
+            <button onClick={randomBookSearch}>Get Random Book</button>
+            <div className="bookContainer">
+                <h1>Book Of The Day:</h1>
+                {randomBookStatus === "success" && randomBook ? (
+                    <div className="book">
+                        <img
+                            src={randomBook.cover || "placeholder-image.png"}
+                            alt={randomBook.title}
+                        />
+                        <h2>Title: {randomBook.title}</h2>
+                        <h3>Author: {randomBook.author}</h3>
+                        <p>Subject: {randomBook.subject}</p>
+                    </div>
+                ) : (
+                    <p>{randomBookStatus || "Click the button to fetch a book!"}</p>
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Home;
