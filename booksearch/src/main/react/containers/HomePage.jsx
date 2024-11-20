@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import './style.css';
+import Loading from "../components/Loading.jsx";
 
 const Home = () => {
     const [randomBook, setRandomBook] = useState(null);
     const [randomBookStatus, setRandomBookStatus] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const bookList = [
         { title: "Pride and Prejudice", author: "Jane Austen", subject: "Classic Literature" },
@@ -17,6 +19,7 @@ const Home = () => {
         const selectedBook = bookList[randomIndex];
         
         try {
+            setIsLoading(true);
             const response = await fetch(`https://openlibrary.org/search.json?title=${selectedBook.title}`);
             const data = await response.json();
 
@@ -29,13 +32,16 @@ const Home = () => {
                     cover: bookDetails.cover_i ? `https://covers.openlibrary.org/b/id/${bookDetails.cover_i}-L.jpg` : null,
                 });
                 setRandomBookStatus("success");
+                setIsLoading(false);
             } else {
                 setRandomBook(null);
                 setRandomBookStatus("No results found");
+                setIsLoading(false);
             }
         } catch (error) {
             console.error("Error fetching book data:", error);
             setRandomBookStatus("error");
+            setIsLoading(false);
         }
     };
 
@@ -58,6 +64,8 @@ const Home = () => {
                     <p>{randomBookStatus || "Click the button to fetch a book!"}</p>
                 )}
             </div>
+            {isLoading && <div className="loadingContainer"> <Loading /></div>
+           }
         </div>
     );
 };

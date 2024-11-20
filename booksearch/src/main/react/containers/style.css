@@ -35,7 +35,7 @@ body, html {
   gap: 24px;
   margin-top: 24px;
   padding: 24px;
-  justify-content: center; 
+  justify-content: flex-start; 
 }
 
 /* Styling for the search inputs */
@@ -64,6 +64,11 @@ body, html {
 .searchingInputs .searchBar img {
   width: 28px;
   height: 28px;
+  cursor: pointer;
+}
+.searchingInputs .searchBar img:hover {
+  background-color: #f1f1f1;
+  border-radius: 50%;
 }
 
 /* Dropdown or selection options */
@@ -109,3 +114,50 @@ body, html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 12px 24px;
 } */
+
+
+.loadingContainer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(119, 115, 115);
+  opacity: 0.5;
+}
+.resultContainer{
+  padding:24px;
+  background-color: #f5f5f5;
+  position: absolute;
+  width: 800px;
+}
+
+.resultContainer ul{
+  list-style: none;
+  margin: 24px 0px;
+  padding: 0px;
+}
+.resultContainer li{
+  margin-bottom: 24px;
+}
+
+.resultContainer .bookDetail {
+  display: flex;
+  gap: 24px;
+}
+.resultContainer .bookDetail .content {
+  flex:15%;
+  
+}
+.resultContainer .bookDetail .subject {
+  flex:40%;
+}
+.resultContainer .bookDetail img {
+  width: 100px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: contain;
+}
