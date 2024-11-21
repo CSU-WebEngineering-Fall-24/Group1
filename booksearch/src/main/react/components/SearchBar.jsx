@@ -23,13 +23,20 @@ const SearchBar =({searchBook})=>{
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
     }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            console.log('enter');
+            handleSearch();
+        }
+    };
     return(
         <div className="searchContainer">
             <div className="searchingInputs">
                 <h2>Search Book:</h2>
                 <div className='selection'>
                     <div className='searchBar'>
-                        <input type="text" placeholder="Search..." onChange={handleSearchChange} value={search}/>
+                        <input type="text" placeholder="Search..." onChange={handleSearchChange} onKeyDown={handleKeyDown}  value={search}/>
                         <img src={SearchIcon} alt="searchIcon" onClick={handleSearch}/>
                     </div>
                     <div className='searchOptions'>

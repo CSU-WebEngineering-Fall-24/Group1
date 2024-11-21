@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './style.css';
 import Loading from "../components/Loading.jsx";
+import axios from "axios";
 
 const Home = () => {
     const [randomBook, setRandomBook] = useState(null);
@@ -20,8 +21,13 @@ const Home = () => {
         
         try {
             setIsLoading(true);
-            const response = await fetch(`https://openlibrary.org/search.json?title=${selectedBook.title}`);
-            const data = await response.json();
+            const response = await axios.get(`/search/titles`, {
+                params: {
+                    title: selectedBook.title
+                }
+            });
+
+            const data = response.data;;
 
             if (data.docs && data.docs.length > 0) {
                 const bookDetails = data.docs[0]; // Pick the first result
@@ -47,7 +53,7 @@ const Home = () => {
 
     return (
         <div className="homeContentContainer">
-            <button onClick={randomBookSearch}>Get Random Book</button>
+            <button type="button" class="btn btn-secondary btn-lg" style={{margin:'24px 0px'}} onClick={randomBookSearch}>Get Random Book</button>
             <div className="bookContainer">
                 <h1>Book Of The Day:</h1>
                 {randomBookStatus === "success" && randomBook ? (
