@@ -13,6 +13,12 @@ const BookSearchPage = () => {
     const [totalResults, setTotalResults] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const booksPerPage = 5;
+    const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    }
+    const indexOfLastBook = currentPage * booksPerPage;
+    const indexOfFirstBook = indexOfLastBook - booksPerPage;
+    const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
 
     const SearhBook = async (data) => {
     if (data.type === "title") {
@@ -47,16 +53,11 @@ const BookSearchPage = () => {
     }
   };
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // Calculate the books to display based on the current page
-  const indexOfLastBook = currentPage * booksPerPage;
-  const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
+  
 
   return (
     <div>
-      <SearchBar searchBook={SearhBook} />
+      <SearchBar searchBook={SearhBook} updateCurrentPage={setCurrentPage}/>
       <div className="resultContainer">
         <p>Total Results: {totalResults}</p>
         <ul>

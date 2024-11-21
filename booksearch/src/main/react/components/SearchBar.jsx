@@ -2,7 +2,7 @@ import React from 'react';
 import SearchIcon from '../assets/images/searchIcon.jpg';
 
 
-const SearchBar =({searchBook})=>{
+const SearchBar =({searchBook, updateCurrentPage})=>{
 
     const [type, setType]=React.useState('title');
     const [search, setSearch]=React.useState('');
@@ -12,6 +12,7 @@ const SearchBar =({searchBook})=>{
             type:type,
             searchTerm:search
         }
+        updateCurrentPage(1);
         searchBook(data);
         setSearch('');
     }
