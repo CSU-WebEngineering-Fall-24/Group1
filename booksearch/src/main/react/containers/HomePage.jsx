@@ -11,7 +11,13 @@ const Home = () => {
     const bookList = [
         { title: "Pride and Prejudice", author: "Jane Austen", subject: "Classic Literature" },
         { title: "1984", author: "George Orwell", subject: "Dystopian Fiction" },
-        { title: "To Kill a Mockingbird", author: "Harper Lee", subject: "American Literature" }
+        { title: "To Kill a Mockingbird", author: "Harper Lee", subject: "American Literature" },
+        { title: "The Hobbit", author: "J.R.R. Tolkien", subject: "Fantasy Fiction" },
+        { title: "The Great Gatsby", author: "F. Scott Fitzgerald", subject: "Classic Literature" },
+        { title: "The Lord of the Rings", author: "J.R.R. Tolkien", subject: "Fantasy Fiction" },
+        { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", subject: "Fantasy Fiction" },
+        { title: "Jane Eyre", author: "Charlotte Brontë", subject: "Classic Literature" },
+        { title: "The Odyssey", author: "Homer", subject: "Epic Poetry" }
         // Add more books as needed
     ];
 
