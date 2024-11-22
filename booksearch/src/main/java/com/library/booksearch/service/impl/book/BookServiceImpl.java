@@ -1,9 +1,9 @@
 package com.library.booksearch.service.impl.book;
 
-import com.library.booksearch.domain.BookResponse;
 import com.library.booksearch.service.book.BookService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -37,6 +37,17 @@ public class BookServiceImpl implements BookService {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject("https://openlibrary.org/search.json?q="+t+"&page="+p,String.class );
     }
-
+    // author => a  / page number => p
+    @Override
+    public String getReqAuthorPages(String a, Number p) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("https://openlibrary.org/search.json?q="+a+"&page="+p, String.class );
+    }
+    // cover id => cid
+    @Override
+    public byte[] getBookCovers(String cid) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("https://covers.openlibrary.org/b/id/"+ cid +"-L.jpg", byte[].class );
+    }
 
 }

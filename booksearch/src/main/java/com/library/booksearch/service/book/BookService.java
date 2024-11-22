@@ -8,4 +8,6 @@ public interface BookService {
     String getReqAuthor(String a);
     String getReqSubject(String s);
     String getReqTitlePages(String t, Number p);
+    String getReqAuthorPages(String a, Number p);
+    byte[] getBookCovers(String cid);
 }
