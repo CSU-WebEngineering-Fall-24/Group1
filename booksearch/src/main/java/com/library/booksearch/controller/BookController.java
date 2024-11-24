@@ -3,9 +3,9 @@ package com.library.booksearch.controller;
 import com.library.booksearch.domain.BookResponse;
 import com.library.booksearch.service.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
@@ -37,6 +37,14 @@ public class BookController {
     public String getSearchTitle(@RequestParam("t") String t, @RequestParam("p") Number p) {
         return bookService.getReqTitlePages(t,p);
     }
-
+    @GetMapping("/search/authors/pages")
+    public String getSearchByAuthor(@RequestParam("a") String a, @RequestParam("p") Number p) {
+        return bookService.getReqAuthorPages(a,p);
+    }
+    @GetMapping(value = "/book/{cid}", produces = MediaType.IMAGE_JPEG_VALUE)
+        public ResponseEntity<byte[]> getBookCovers(@PathVariable("cid") String cid) {
+        byte[] bytes = bookService.getBookCovers(cid);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+    }
 
 }
