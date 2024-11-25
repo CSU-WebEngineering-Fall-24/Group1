@@ -7,6 +7,7 @@ import BookSearchPage from './containers/BookSearchPage.jsx'
 import { createBrowserRouter,
     RouterProvider
  } from "react-router-dom";
+import AboutUsPage from "./containers/AboutUsPage.jsx";
 
 
  const router = createBrowserRouter(
@@ -22,6 +23,10 @@ import { createBrowserRouter,
                 {
                     path:"bookSearch",
                     element:<BookSearchPage/>
+                },
+                {
+                    path:"aboutus",
+                    element:<AboutUsPage/>
                 },
             ]
         },

@@ -11,7 +11,11 @@ const Nav = (props) => {
         {
           url:"/bookSearch",
           label:'Book Search'
-      },
+        },
+        {
+          url:"/aboutus",
+          label:'About Us'
+        },
 ]
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
