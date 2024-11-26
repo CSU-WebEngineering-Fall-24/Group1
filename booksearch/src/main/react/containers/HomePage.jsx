@@ -59,6 +59,12 @@ const Home = () => {
 
     return (
         <div className="homeContentContainer">
+            <div className="col-6 mt-3">
+                <h4 className="text-center">The Open Library API Book Search Project</h4>
+                <p className="lead">This web application was developed using the Open Library Search API. The API is the most convenient way to retrieve book data on Open Library! The API allows you to return both the Work level information such as author and year published as well as Edition level information including book title, identifiers, and covers.</p>
+                <h5 className="pt-3 text-center">Using Book Search</h5>
+                <p className="lead">Users can get a random book when this page is loaded by clicking the 'Get Random Book' button, or search for a book by <b>author</b> or <b>title</b> using the <a className="text-primary-emphasis" href="/bookSearch">BookSearch</a> page. The search will return a list of results found from the search query, including book title, author and related subject information.</p>
+            </div>
             <button type="button" class="btn btn-secondary btn-lg" style={{margin:'24px 0px'}} onClick={randomBookSearch}>Get Random Book</button>
             <div className="bookContainer">
                 <h1>Book Of The Day:</h1>
