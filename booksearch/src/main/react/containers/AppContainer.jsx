@@ -9,9 +9,7 @@ const AppContainer = () => {
         <>
             <Nav locationUrl={location.pathname} />
             <Outlet/>
-
         </>
-        
     )
 }
 

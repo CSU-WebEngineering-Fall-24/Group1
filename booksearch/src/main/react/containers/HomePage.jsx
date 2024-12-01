@@ -33,15 +33,29 @@ const Home = () => {
                 }
             });
 
-            const data = response.data;;
+            const data = response.data;
 
             if (data.docs && data.docs.length > 0) {
                 const bookDetails = data.docs[0]; // Pick the first result
+                let bookCover = null;
+                if (bookDetails.cover_i) {
+                    try {
+                        const bookCoverResponse = await axios.get(`/book/${bookDetails.cover_i}`, {
+                            responseType: 'arraybuffer' 
+                        });
+                        const blob = new Blob([bookCoverResponse.data], { type: 'image/jpeg' });
+                        bookCover = URL.createObjectURL(blob);
+                
+                    } catch (error) {
+                        console.error('Error fetching the book cover:', error);
+                    }
+
+                }
                 setRandomBook({
                     title: bookDetails.title,
                     author: bookDetails.author_name ? bookDetails.author_name.join(", ") : "Unknown",
                     subject: selectedBook.subject,
-                    cover: bookDetails.cover_i ? `https://covers.openlibrary.org/b/id/${bookDetails.cover_i}-L.jpg` : null,
+                    cover: bookCover,
                 });
                 setRandomBookStatus("success");
                 setIsLoading(false);
@@ -65,7 +79,7 @@ const Home = () => {
                 <h5 className="pt-3 text-center">Using Book Search</h5>
                 <p className="lead">Users can get a random book when this page is loaded by clicking the 'Get Random Book' button, or search for a book by <b>author</b> or <b>title</b> using the <a className="text-primary-emphasis" href="/bookSearch">BookSearch</a> page. The search will return a list of results found from the search query, including book title, author and related subject information.</p>
             </div>
-            <button type="button" class="btn btn-secondary btn-lg" style={{margin:'24px 0px'}} onClick={randomBookSearch}>Get Random Book</button>
+            <button type="button" className="btn btn-secondary btn-lg" style={{margin:'24px 0px'}} onClick={randomBookSearch}>Get Random Book</button>
             <div className="bookContainer">
                 <h1>Book Of The Day:</h1>
                 {randomBookStatus === "success" && randomBook ? (

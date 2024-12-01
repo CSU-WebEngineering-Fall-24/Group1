@@ -45,7 +45,6 @@ const SearchBar =({searchBook, updateCurrentPage})=>{
                         <label htmlFor='title'>Title</label>
                         <input type="radio" name="searchOption" value="author" id='author' onChange={handleTypeChange}/>
                         <label htmlFor='author'>Author</label>
-
                     </div>
                 </div>
             </div>

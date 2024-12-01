@@ -20,10 +20,12 @@ const BookSearchPage = () => {
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
     const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
 
+
     const SearhBook = async (data) => {
     if (data.type === "title") {
         try {
             setIsLoading(true);
+            //fetch data from the server with title input
             const response = await axios.get(`/search/titles`, {
               params: { title: data.searchTerm }
             });
@@ -39,6 +41,7 @@ const BookSearchPage = () => {
     if (data.type === "author") {
       try {
         setIsLoading(true);
+        //fetch data from the server with author input
         const response = await axios.get(`/search/authors`, {
           params: { a: data.searchTerm }
         });
@@ -53,7 +56,21 @@ const BookSearchPage = () => {
     }
   };
 
-  
+  function getCoverImage(coverId) {
+    // const baseUrl = 'http://covers.openlibrary.org/b/id/';
+    // return `${baseUrl}${coverId}-L.jpg`;
+
+    //fetch cover image from backend 
+    return `/book/${coverId}`;
+  }
+
+  function getAuthorImage(authorId) {
+    //not supported for author cover image
+    const baseUrl = 'http://covers.openlibrary.org/a/olid/';
+    return `${baseUrl}${authorId}-L.jpg`;
+  }
+ 
+
 
   return (
     <div>
@@ -66,9 +83,7 @@ const BookSearchPage = () => {
                     <li key={book.key} className="list">
                         <div className="bookDetail">
                             <div className="coverImage">
-                                <img src={book.cover_i
-                                    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
-                                    : NoCover } alt={book.title} />
+                                <img src={book.cover_i ? getCoverImage(book.cover_i) : NoCover} alt={book.title} />
                             </div>
                             <div className="content">
                                 <h5>Title: {book.title}</h5>
@@ -83,7 +98,7 @@ const BookSearchPage = () => {
                         <div className="bookDetail">
                             <div className="coverImage">
                                 <img src={book.key 
-                                    ? `https://covers.openlibrary.org/a/olid/${book.key}-M.jpg`
+                                    ? getAuthorImage(book.key)
                                     : NoCover } alt={book.title} />
                             </div>
                             <div className="content">
