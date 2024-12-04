@@ -13,16 +13,16 @@ The BookSearch application displays a random books with author information and a
 ## Installation
 
 1. To run the BookSearch app locally download the repository or clone to your local development environment. Explore the structure and important files.
-2. Follow the instruction to load Gradle library if prompted (IntelliJ).
-3. To install npm run 'npm install' from react folder in your terminal window. This will create a new node_modules folder with required packages.
-4. Open src/main/resources/application.properties and update server.port if need. This project is using port 8084.
-5. In a terminal window to cd into the react folder root and run 'npm run build'.
-6. Run the main java Application file BooksearchApplication.java
+2. Follow the instructions to load Gradle library if prompted (IntelliJ).
+3. To install npm run 'npm install' from the react folder in your terminal window. This will create a new _node_modules_ folder with required packages.
+4. Open the application.properties file from src/main/resources/ and update server.port if need. This project is using port 8084.
+5. In a terminal window, cd into the react folder root and run 'npm run build'.
+6. Run the main java Application file BooksearchApplication.java.
 7. Return to your browser and enter localhost address with server port number <http://localhost:8084/>.
 
 ## APIs used in project
 
-The URL format for API is simple and returns information based on the query parameter. Eg:
+The URL format for the APIs return information based on the query parameter. Eg:
 
 * <https://openlibrary.org/search.json?q=the+lord+of+the+rings>
 * <https://openlibrary.org/search.json?title=the+lord+of+the+rings>
