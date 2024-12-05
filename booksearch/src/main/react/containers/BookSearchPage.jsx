@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import SearchBar from "../components/SearchBar.jsx";
 import axios from 'axios';
@@ -57,9 +57,6 @@ const BookSearchPage = () => {
   };
 
   function getCoverImage(coverId) {
-    // const baseUrl = 'http://covers.openlibrary.org/b/id/';
-    // return `${baseUrl}${coverId}-L.jpg`;
-
     //fetch cover image from backend 
     return `/book/${coverId}`;
   }
